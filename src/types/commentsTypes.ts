@@ -5,3 +5,7 @@ export interface CommentProps {
   email: string;
   body: string;
 }
+
+export interface ApiResponseComments {
+  data: CommentProps[];
+}

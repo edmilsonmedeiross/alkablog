@@ -4,3 +4,7 @@ export interface PostProps {
   title: string;
   body: string;
 }
+
+export interface ApiResponsePosts {
+  data: PostProps[];
+}
