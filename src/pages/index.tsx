@@ -35,6 +35,7 @@ export default function Home() {
     }
 
     setIsPrevVisible(page > ONE);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, posts.state]);
 
   console.log(posts);

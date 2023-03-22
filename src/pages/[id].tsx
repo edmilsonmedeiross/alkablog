@@ -23,6 +23,7 @@ function DetailPost() {
     }
 
     fetch();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   
   if (posts.state !== 'hasData') return <div>Carregando...</div>;
