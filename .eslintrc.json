@@ -1,7 +1,7 @@
 {
     "parser": "@typescript-eslint/parser",
     "plugins": [
-      "react-hooks"
+        "react-hooks"
     ],
     "extends": [
         "next",
@@ -9,7 +9,7 @@
         "next/core-web-vitals",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended"
-      ],
+    ],
     "rules": {
         "quotes": ["error", "single"],
         "semi": ["error", "always"],
@@ -18,7 +18,7 @@
         "react/react-in-jsx-scope": "off"
     },
     "parserOptions": {
-        "project": "./tsconfig.json"
+        "project": ["./tsconfig.json"]
     }
 }
 /*
