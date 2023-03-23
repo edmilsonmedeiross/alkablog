@@ -68,7 +68,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className='dark:bg-slate-800'>
+      <main>
         <div className='w-full h-full mt-20'>
           <article className='p-4 flex flex-wrap gap-5 justify-center'>
             {posts.state === 'hasData' && posts.data.map((post) => (
@@ -78,11 +78,22 @@ export default function Home() {
                 className='
                   flex flex-col justify-center items-center
                   w-72 shadow-md rounded-md
-                  hover:bg-gray-200 transition duration-300 ease-in-out text-center
-                  bg-gray-100 h-72 p-5 mt-3'
+                  hover:bg-gray-200 transition
+                  duration-300 ease-in-out text-center
+                  bg-gray-100 h-72 p-5 mt-3
+                  dark:bg-slate-500 dark:hover:bg-gray-700
+                  dark:text-gray-900 dark:hover:text-gray-400
+                  group
+                  '
               >
                 <div className='flex flex-col items-center gap-8'>
-                  <h1 className='font-bold'>{ post.title }</h1>
+                  <h1 className='
+                    font-semibold dark:text-gray-900
+                    text-gray-800
+                    dark:group-hover:text-white'
+                  >
+                    { post.title }
+                  </h1>
                   <p>{ post.body }</p>
                 </div>
               </Link>
@@ -91,12 +102,30 @@ export default function Home() {
         </div>
         <div className='flex justify-between'>
           <div className='ml-8'>
-            {isPrevVisible && <button onClick={() => setPage(1) } ><FaAngleDoubleLeft size={30}/></button>}
-            {isPrevVisible && <button onClick={() => setPage(page - 1)} ><FaAngleLeft size={30}/></button>}
+            {isPrevVisible && (
+              <button onClick={() => setPage(1) } >
+                <FaAngleDoubleLeft size={30}/>
+              </button>
+            )}
+
+            {isPrevVisible && (
+              <button onClick={() => setPage(page - 1)} >
+                <FaAngleLeft size={30}/>
+              </button>
+            )}
           </div>
           <div className='mr-8'>
-            {isNextVisible && <button onClick={() => setPage(page + 1) } ><FaAngleRight size={30}/></button>}
-            {isNextVisible && <button onClick={() => setPage(allPosts.length / PAGE_MAX) } ><FaAngleDoubleRight size={30}/></button>}
+            {isNextVisible && (
+              <button onClick={() => setPage(page + 1) } >
+                <FaAngleRight size={30}/>
+              </button>
+            )}
+
+            {isNextVisible && (
+              <button onClick={() => setPage(allPosts.length / PAGE_MAX) } >
+                <FaAngleDoubleRight size={30}/>
+              </button>
+            )}
           </div>
         </div>
         <div>
@@ -131,7 +160,8 @@ export default function Home() {
                     <p 
                       className='
                         text-center text-xs font-semibold group-hover:text-blue-600
-                        transition-colors duration-300'
+                        transition-colors duration-300
+                        dark:group-hover:text-yellow-500'
                     >
                       {user.username}
                     </p>

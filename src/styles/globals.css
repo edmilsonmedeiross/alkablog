@@ -5,3 +5,9 @@
 body {
   background-color: #ebebeb;
 }
+
+@layer base {
+  body {
+      @apply dark:bg-gray-800 dark:transition-colors duration-300 ease-in-out;
+  }
+}

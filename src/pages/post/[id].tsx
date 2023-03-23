@@ -47,10 +47,20 @@ function DetailPost() {
               flex flex-col
               shadow-md rounded-md
               h-96 justify-evenly
-              p-4'
+              hover:transition hover:duration-300
+              p-4 dark:bg-gray-700
+              '
           >
-            <h1 className='text-2xl'>{post.title}</h1>
-            <p>{post.body}</p>
+            <h1 className='
+              text-2xl dark:text-gray-300'
+            >
+              {post.title}
+            </h1>
+            <p className='
+              dark:text-gray-300'
+            >
+              {post.body}
+            </p>
           </div>
         </section>
       )}
@@ -60,16 +70,32 @@ function DetailPost() {
       flex-col gap-4 max-w-2xl
       '
       >
-        <p className='font-semibold text-2xl text-stone-600 mt-8 mb-8'>Comentários</p>
+        <p className='
+          font-semibold text-2xl
+        text-stone-600 mt-8 mb-8
+        dark:text-gray-300
+         '
+        >
+          Comentários
+        </p>
         <div
           className='flex flex-col gap-8'
         >
           {comments && comments.map((comment: CommentProps) => (
             <div
               key={comment.id}
-              className='shadow-md p-4 rounded-md flex flex-col gap-8'
+              className='
+                shadow-md p-4 rounded-md flex
+                flex-col gap-8
+                dark:bg-gray-700
+                '
             >
-              <h4 className='font-medium text-stone-800'>{comment.name}</h4>
+              <h4 className='
+                font-medium text-stone-800
+                dark:text-gray-300'
+              >
+                {comment.name}
+              </h4>
               <p className='font-light'>{comment.body}</p>
               <p className='font-medium text-blue-600'>{comment.email}</p>
             </div>

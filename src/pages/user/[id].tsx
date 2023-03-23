@@ -38,6 +38,7 @@ function UserDetail() {
           items-center justify-center
           p-4 shadow-lg rounded-md
           w-96 mx-auto mt-60
+          dark:bg-gray-700
           '
         >
           <div className='
@@ -54,7 +55,7 @@ function UserDetail() {
               height={200}
               priority={true}
             />
-            <p className='font-semibold text-base'>
+            <p className='font-semibold text-base dark:text-gray-300'>
               {user.username}
             </p>
           </div>
@@ -66,16 +67,29 @@ function UserDetail() {
             <h1 
               className='
                 font-medium flex items-center gap-2 w-full
+                dark:text-gray-300
               '
             >
               <FaUserAlt size={30} />
               {user.name}
             </h1>
-            <p className='flex items-center gap-2 w-full text-blue-600'>
+            <p className='
+              flex items-center gap-2
+              w-full text-blue-600
+            dark:text-blue-500
+              dark:font-extrabold
+              '
+            >
               <MdEmail size={30}/>
               {user.email}
             </p>
-            <p className='flex items-center gap-2 w-full text-blue-600'>
+            <p className='
+              flex items-center gap-2
+              w-full text-blue-600
+              dark:text-blue-500
+              dark:font-extrabold
+              '
+            >
               <AiOutlineGlobal size={30}/>
               {user.website}
             </p>

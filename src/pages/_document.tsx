@@ -1,13 +1,17 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 
-export default function Document() {
+function Document() {  
   return (
     <Html lang="pt-BR">
       <Head />
-      <body>
+      <body className=''>
         <Main />
         <NextScript />
       </body>
     </Html>
   );
 }
+
+export default Document;
+
+

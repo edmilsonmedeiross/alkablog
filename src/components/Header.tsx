@@ -1,12 +1,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../../public/next.svg';
-import { FaHome } from 'react-icons/fa';
-import { FaBookReader } from 'react-icons/fa';
+import { FaHome, FaBookReader } from 'react-icons/fa';
+import ToggleTheme from './ToggleTheme';
+
+
 
 function Header() {
   return (
-    <div className='flex justify-between fle w-full h-40 pl-4 bg-slate-500'>
+    <div className='
+      flex justify-between
+      w-full h-40 pl-4 bg-slate-500
+      '
+    >
+      <ToggleTheme />
       <div className='flex'>
         <Image
           className=''
@@ -17,7 +24,11 @@ function Header() {
           priority={true}
         />
       </div>
-      <nav className='flex justify-center items-center gap-3 pr-4 font-bold text-slate-900'>
+      <nav className='
+        flex justify-center items-center
+        gap-3 pr-4 font-bold text-slate-900
+        '
+      >
         <Link
           href='#users'
           className='

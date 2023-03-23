@@ -4,6 +4,7 @@ import { Provider } from 'jotai';
 import { useHydrateAtoms } from 'jotai/react/utils';
 import type { AppProps } from 'next/app';
 import { queryClientAtom } from 'jotai-tanstack-query';
+import { ThemeProvider } from 'next-themes';
 import {
   Hydrate,
   QueryClient,
@@ -19,7 +20,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={ queryClient }>
       <Hydrate state={ pageProps.dehydratedState }>
         <Provider>
-          <Component {...pageProps} />
+          <ThemeProvider attribute="class">
+            <Component {...pageProps} />
+          </ThemeProvider>
         </Provider>
       </Hydrate>
     </QueryClientProvider>
