@@ -7,6 +7,7 @@ import { loadable } from 'jotai/vanilla/utils';
 import Link from 'next/link';
 import Image from 'next/image';
 import { UserProps } from '@/types/userTypes';
+import Header from '@/components/Header';
 
 const ONE = 1;
 const PAGE_MAX = 10;
@@ -31,6 +32,7 @@ export default function Home() {
   const [isNextVisible, setIsNextVisible] = useAtom(isNextVisibleAtom);
   const [isPrevVisible, setIsPrevVisible] = useAtom(isPrevVisibleAtom);
   const [page, setPage] = useAtom(pageAtom);
+  
   const isVisible = page < allPosts.length / PAGE_MAX;
 
   useEffect(() => {
@@ -61,6 +63,7 @@ export default function Home() {
   
   return (
     <>
+      <Header />
       <main>
         <h1 className="text-3xl font-bold underline">
           Hello world!
@@ -81,7 +84,10 @@ export default function Home() {
           <section>
             {
               users.map((user: UserProps) => (
-                <Link key={user.id} href={`user/${user.id}`}>
+                <Link
+                  key={user.id} href={`user/${user.id}`}
+                  id='users'
+                >
                   <div>
                     <h3>{user.username}</h3>
                     <Image

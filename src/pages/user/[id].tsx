@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { UserProps } from '../../types/userTypes';
 import Image from 'next/image';
+import Header from '@/components/Header';
 
 const usersAtom = atom<UserProps[]>([]);
 
@@ -27,7 +28,7 @@ function UserDetail() {
   
   return (
     <div>
-      <div>UserDetail</div>
+      <Header />
       {user && (
         <div>
           <p>{user.username}</p>

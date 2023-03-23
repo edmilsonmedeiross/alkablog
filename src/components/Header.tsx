@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import logo from '../../public/next.svg';
 
 function Header() {
   return (
     <div>
       <div>
         <Image
-          src="/images/logo.svg"
+          src={logo}
           alt="logo"
           width={200}
           height={200}

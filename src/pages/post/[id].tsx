@@ -1,3 +1,4 @@
+import Header from '@/components/Header';
 import { fetchCommentsPosts } from '@/services/helpers';
 import { CommentProps } from '@/types/commentsTypes';
 import { atom, useAtom } from 'jotai';
@@ -32,7 +33,7 @@ function DetailPost() {
 
   return (
     <>
-      <div>DetailPost</div>
+      <Header />
       {post && (
         <div>
           <h1 className='font-medium'>{post.title}</h1>
