@@ -68,15 +68,16 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main className='dark:bg-slate-800'>
         <div className='w-full h-full mt-20'>
           <article className='p-4 flex flex-wrap gap-5 justify-center'>
             {posts.state === 'hasData' && posts.data.map((post) => (
               <Link
                 href={`/post/${post.id}`}
                 key={ post.id }
-                className='flex flex-col justify-center items-center
-                 w-72 border-solid border-2 border-gray-400 rounded-md
+                className='
+                  flex flex-col justify-center items-center
+                  w-72 shadow-md rounded-md
                   hover:bg-gray-200 transition duration-300 ease-in-out text-center
                   bg-gray-100 h-72 p-5 mt-3'
               >
@@ -112,9 +113,9 @@ export default function Home() {
                   className='
                     w-36 h-36 rounded-full flex
                     flex-col gap-y-8 items-center justify-center
-                    bg hover:transform hover:scale-110
+                    hover:transform hover:scale-110
                     transition-transform duration-300 ease-in-out
-                    mx-auto'
+                    mx-auto group'
                   key={user.id}
                   href={`user/${user.id}`}
                   id='users'
@@ -129,7 +130,7 @@ export default function Home() {
                     />
                     <p 
                       className='
-                        text-center text-xs font-semibold hover:text-blue-600
+                        text-center text-xs font-semibold group-hover:text-blue-600
                         transition-colors duration-300'
                     >
                       {user.username}
