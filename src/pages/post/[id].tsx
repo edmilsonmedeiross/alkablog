@@ -9,7 +9,6 @@ import { loadablePosts } from '../index';
 import { FaAngleLeft } from 'react-icons/fa';
 
 const initialState: CommentProps[] = [];
-
 const coMmentsAtom = atom(initialState);
 
 function DetailPost() {

@@ -1,5 +1,4 @@
 import { atom, useAtom } from 'jotai';
-import { posts as postsAtom } from '../jotai/postsJotai';
 import { dehydrate, QueryClient } from 'react-query';
 import { fetchPosts, fetchUsers } from '@/services/helpers';
 import { useEffect } from 'react';
@@ -9,6 +8,11 @@ import Image from 'next/image';
 import { UserProps } from '@/types/userTypes';
 import Header from '@/components/Header';
 import { 
+  isNextVisibleAtom, isPrevVisibleAtom,
+  pageAtom, posts as postsAtom, usersAtom
+} from '../jotai/aplicationAtoms';
+
+import { 
   FaAngleRight, FaAngleDoubleRight,
   FaAngleLeft, FaAngleDoubleLeft
 } from 'react-icons/fa';
@@ -16,12 +20,7 @@ import {
 const ONE = 1;
 const PAGE_MAX = 10;
 
-// cria átomos do jotai
-export const usersAtom = atom([] as UserProps[]);
-const isNextVisibleAtom = atom(true);
-const isPrevVisibleAtom = atom(false);
-const pageAtom = atom(1);
-const slicedRenderPostsAtom = atom(async (get) => {
+export const slicedRenderPostsAtom = atom(async (get) => {
   const posts = await get(postsAtom);
   const page = get(pageAtom);
   return posts.slice((page - ONE) * PAGE_MAX, PAGE_MAX * page);

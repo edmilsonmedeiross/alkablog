@@ -3,10 +3,14 @@ import Link from 'next/link';
 import logo from '../../public/next.svg';
 import { FaHome, FaBookReader } from 'react-icons/fa';
 import ToggleTheme from './ToggleTheme';
+import { useRouter } from 'next/router';
 
 
 
 function Header() {
+  const router = useRouter();
+  const { pathname } = router;
+  
   return (
     <div className='
       flex justify-between
@@ -29,16 +33,18 @@ function Header() {
         gap-3 pr-4 font-bold text-slate-900
         '
       >
-        <Link
-          href='#users'
-          className='
+        {pathname === '/' && (
+          <Link
+            href='#users'
+            className='
             hover:text-blue-100 hover:font-bold
             transition duration-300 ease-in-out
             flex items-center gap-2'
-        >
-          <FaBookReader size={25}/>
+          >
+            <FaBookReader size={25}/>
           Top Leitores
-        </Link>
+          </Link>
+        )}
         <Link
           href='/'
           className='
