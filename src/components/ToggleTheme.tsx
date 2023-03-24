@@ -10,6 +10,7 @@ const ToggleTheme = () => {
 
   useEffect(() => {
     setIsResolved(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const icon = theme === 'light' ? <MdOutlineLightMode size={30}/> : <MdDarkMode size={30}/>;

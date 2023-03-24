@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { FaBookReader, FaHome } from 'react-icons/fa';
 import { useAtom } from 'jotai';
-import { mobileAtom } from './Header';
 import { useRouter } from 'next/router';
+import { mobileAtom } from '@/jotai/aplicationAtoms';
 
 function MobileMenu() {
   const [, setMobileVisible] = useAtom(mobileAtom);

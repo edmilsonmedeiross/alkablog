@@ -6,10 +6,11 @@ import ToggleTheme from './ToggleTheme';
 import { useRouter } from 'next/router';
 import { GoThreeBars } from 'react-icons/go';
 import { IoClose } from 'react-icons/io5';
-import { atom, useAtom } from 'jotai';
+import { useAtom } from 'jotai';
 import MobileMenu from './MobileMenu';
+import { mobileAtom } from '@/jotai/aplicationAtoms';
 
-export const mobileAtom = atom(false);
+
 
 function Header() {
   const router = useRouter();
@@ -20,7 +21,7 @@ function Header() {
     <div>
       <header className='
           flex justify-between items-center
-          w-screen h-40 bg-slate-500 p-4
+          w-screen h-40 bg-slate-500 p-8
           min-h-[144px]
           max-md:flex-col max-md:items-end
           max-md:h-36

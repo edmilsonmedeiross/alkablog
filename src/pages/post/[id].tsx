@@ -19,7 +19,7 @@ function DetailPost() {
   
   useEffect(() => {
     async function fetch() {
-      const response: Array<CommentProps> = await fetchCommentsPosts(id);
+      const response: CommentProps[] = await fetchCommentsPosts(id);
       setComments(response);
     }
 

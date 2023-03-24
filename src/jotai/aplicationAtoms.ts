@@ -28,3 +28,6 @@ export const personAtom = atom<UserProps | null>(null);
 
 // cria o atomo de tema
 export const isResolvedAtom = atom(false);
+
+// cria átomos do header
+export const mobileAtom = atom(false);
