@@ -1,49 +1,113 @@
-import { atom, useAtom } from 'jotai';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import { UserProps } from '../../types/userTypes';
+import crypto from 'crypto';
 import Image from 'next/image';
+import Header from '@/components/Header';
+import { MdEmail } from 'react-icons/md';
+import { AiOutlineGlobal } from 'react-icons/ai';
+import { FaUserAlt } from 'react-icons/fa';
+import { fetchUserById } from '@/services/helpers';
+import { GetServerSidePropsContext } from 'next';
+import { UserProps } from '@/types/userTypes';
+import Head from 'next/head';
 
-const usersAtom = atom<UserProps[]>([]);
-
-function UserDetail() {
-  const router = useRouter();
-  const [users, setUsers] = useAtom(usersAtom);
-  const { id } = router.query;
-
-  useEffect(() => {
-    if (localStorage.getItem('users')) {
-      const users = JSON.parse(localStorage.getItem('users') || '[]');
-      setUsers(users);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  if (!users) return <div>Carregando...</div>;
-
-  const user = users.find((user) => user.id === Number(id));
-  
-  console.log(users);
-  
+function UserDetail({ person }: { person: UserProps }) {
   return (
-    <div>
-      <div>UserDetail</div>
-      {user && (
-        <div>
-          <p>{user.username}</p>
-          <Image
-            src={user.avatar}
-            alt={user.name}
-            width={200}
-            height={200}
-            priority={true}
-          />
-          <h1 className='font-medium'>{user.name}</h1>
-          <p>{user.email}</p>
-          <p>{user.website}</p>
+    <div className='flex flex-col items-center h-screen gap-10'>
+      <Head>
+        <title>Detalhes | {person.name}</title>
+      </Head>
+      <Header />
+      {person && (
+        <div className='
+          flex gap-3
+          items-center justify-center
+          justify-self-center
+          p-4 shadow-lg rounded-md
+          w-96 my-auto mx-8
+          dark:bg-gray-700
+          max-md:w-auto
+          max-md:flex-col
+          max-md:gap-10
+          '
+        >
+          <div className='
+            flex flex-col items-center justify-center 
+          '
+          >
+            <Image
+              className='
+                rounded-full
+              '
+              src={person.avatar}
+              alt={person.name}
+              width={200}
+              height={200}
+              priority={true}
+            />
+            <p className='font-semibold text-base dark:text-gray-300'>
+              {person.username}
+            </p>
+          </div>
+          <div className='
+            flex flex-col items-center justify-center
+            gap-3
+          '
+          >
+            <h1 
+              className='
+                font-medium flex items-center gap-2 w-full
+                dark:text-gray-300
+              '
+            >
+              <FaUserAlt size={30} />
+              {person.name}
+            </h1>
+            <p className='
+              flex items-center gap-2
+              w-full text-blue-600
+            dark:text-blue-500
+              dark:font-extrabold
+              '
+            >
+              <MdEmail size={30}/>
+              {person.email}
+            </p>
+            <p className='
+              flex items-center gap-2
+              w-full text-blue-600
+              dark:text-blue-500
+              dark:font-extrabold
+              '
+            >
+              <AiOutlineGlobal size={30}/>
+              {person.website}
+            </p>
+          </div>
         </div>
       )}
     </div>
-  );}
+  );
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { id } = context.query; // pega o valor do ID da URL
+  const person: UserProps = await fetchUserById(id as string);
+
+  function generateGravatarHash(email: string) {
+    // converte o endereço de e-mail para minúsculas e remove espaços em branco
+    email = email.trim().toLowerCase();
+    // cria um hash MD5 do endereço de e-mail
+    const hash = crypto.createHash('md5').update(email).digest('hex');
+    // retorna o hash como uma string em minúsculas
+    return hash;
+  }
+
+  person.avatar = `https://robohash.org/${generateGravatarHash(person.email)}.png?size=200x200`;
+
+  return {
+    props: {
+      person,
+    },
+  };
+}
 
 export default UserDetail;

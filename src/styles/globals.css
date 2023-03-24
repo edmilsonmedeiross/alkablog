@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background-color: #ebebeb;
+}
+
+body:has(.mobile-menu) {
+  overflow-y: hidden;
+}
+
+@layer base {
+  body {
+      @apply dark:bg-gray-800 dark:transition-colors duration-300 ease-in-out;
+  }
+}
+

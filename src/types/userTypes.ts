@@ -26,3 +26,7 @@ export interface UserProps {
 export interface ApiResponseUsers {
   data: UserProps[];
 }
+
+export interface ApiResponseUser {
+  data: UserProps;
+}
