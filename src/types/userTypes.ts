@@ -21,3 +21,7 @@ export interface UserProps {
     bs: string;
   };
 }
+
+export interface ApiResponseUsers {
+  data: UserProps[];
+}
