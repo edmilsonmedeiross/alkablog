@@ -2,7 +2,6 @@ import { useAtom } from 'jotai';
 import { dehydrate, QueryClient } from 'react-query';
 import { fetchPosts, fetchUsers } from '@/services/helpers';
 import { useEffect } from 'react';
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { UserProps } from '@/types/userTypes';
@@ -17,6 +16,7 @@ import {
   FaAngleRight, FaAngleDoubleRight,
   FaAngleLeft, FaAngleDoubleLeft
 } from 'react-icons/fa';
+import Head from 'next/head';
 
 const ONE = 1;
 const PAGE_MAX = 10;
@@ -58,6 +58,9 @@ export default function Home() {
   
   return (
     <>
+      <Head>
+        <title>Home | Blog</title>
+      </Head>
       <Header />
       <main>
         <div className='w-full h-full mt-20'>

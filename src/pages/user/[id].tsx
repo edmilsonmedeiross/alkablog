@@ -7,10 +7,14 @@ import { FaUserAlt } from 'react-icons/fa';
 import { fetchUserById } from '@/services/helpers';
 import { GetServerSidePropsContext } from 'next';
 import { UserProps } from '@/types/userTypes';
+import Head from 'next/head';
 
 function UserDetail({ person }: { person: UserProps }) {
   return (
     <div className='flex flex-col items-center h-screen gap-10'>
+      <Head>
+        <title>Detalhes | {person.name}</title>
+      </Head>
       <Header />
       {person && (
         <div className='
