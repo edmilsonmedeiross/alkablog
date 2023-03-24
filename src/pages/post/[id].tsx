@@ -1,11 +1,11 @@
 import Header from '@/components/Header';
+import { loadablePosts } from '@/jotai/aplicationAtoms';
 import { fetchCommentsPosts } from '@/services/helpers';
 import { CommentProps } from '@/types/commentsTypes';
 import { atom, useAtom } from 'jotai';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { loadablePosts } from '../index';
 import { FaAngleLeft } from 'react-icons/fa';
 
 const initialState: CommentProps[] = [];

@@ -2,9 +2,9 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 function Document() {  
   return (
-    <Html lang="pt-BR">
+    <Html lang="pt-BR" >
       <Head />
-      <body className=''>
+      <body>
         <Main />
         <NextScript />
       </body>

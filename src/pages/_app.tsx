@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={ queryClient }>
       <Hydrate state={ pageProps.dehydratedState }>
         <Provider>
-          <ThemeProvider attribute="class">
+          <ThemeProvider defaultTheme='system' attribute="class">
             <Component {...pageProps} />
           </ThemeProvider>
         </Provider>

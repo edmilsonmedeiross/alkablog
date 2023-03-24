@@ -1,15 +1,16 @@
-import { atom, useAtom } from 'jotai';
+import { useAtom } from 'jotai';
 import { dehydrate, QueryClient } from 'react-query';
 import { fetchPosts, fetchUsers } from '@/services/helpers';
 import { useEffect } from 'react';
-import { loadable } from 'jotai/vanilla/utils';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { UserProps } from '@/types/userTypes';
 import Header from '@/components/Header';
 import { 
   isNextVisibleAtom, isPrevVisibleAtom,
-  pageAtom, posts as postsAtom, usersAtom
+  loadablePosts,
+  pageAtom, postsAtom, usersAtom
 } from '../jotai/aplicationAtoms';
 
 import { 
@@ -19,14 +20,6 @@ import {
 
 const ONE = 1;
 const PAGE_MAX = 10;
-
-export const slicedRenderPostsAtom = atom(async (get) => {
-  const posts = await get(postsAtom);
-  const page = get(pageAtom);
-  return posts.slice((page - ONE) * PAGE_MAX, PAGE_MAX * page);
-});
-
-export const loadablePosts = loadable(slicedRenderPostsAtom);
 
 export default function Home() {
   const [users, setUsers] = useAtom(usersAtom);
@@ -57,7 +50,6 @@ export default function Home() {
         user.avatar = `https://robohash.org/${text}.png?size=200x200`;
       });
       setUsers(users);
-      localStorage.setItem('users', JSON.stringify(users));
     }
     
     fetch();

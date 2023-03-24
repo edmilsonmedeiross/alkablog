@@ -1,16 +1,25 @@
+import { isResolvedAtom } from '@/jotai/aplicationAtoms';
+import { useAtom } from 'jotai';
 import { useTheme } from 'next-themes';
+import { useEffect } from 'react';
 import { MdDarkMode, MdOutlineLightMode } from 'react-icons/md';
 
-
 const ToggleTheme = () => {
-  const { theme, setTheme } = useTheme();
+  const [isResolved, setIsResolved] = useAtom(isResolvedAtom);
+  const { resolvedTheme, theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setIsResolved(true);
+  }, []);
+
+  const icon = theme === 'light' ? <MdOutlineLightMode size={30}/> : <MdDarkMode size={30}/>;
 
   return (
     <button
-      onClick={() => theme === 'dark'? setTheme('light'): setTheme('dark')}
-      className='mx-auto right-3 top-3 absolute'
+      className='md:absolute md:right-3 md:top-3'
+      onClick={() => setTheme(resolvedTheme ==='light' ? 'dark' : 'light')}
     >
-      {theme === 'dark' ? <MdDarkMode size={30}/> : <MdOutlineLightMode size={30}/>}
+      {isResolved && icon}
     </button>
   );
 };
