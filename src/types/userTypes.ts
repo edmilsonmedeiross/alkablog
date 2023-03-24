@@ -3,6 +3,7 @@ export interface UserProps {
   name: string;
   username: string;
   email: string;
+  avatar: string;
   address: {
     street: string;
     suite: string;
