@@ -7,6 +7,7 @@ Este é um projeto de blog que exibe posts na página inicial e ao clicar em um 
 ## Stack utilizada
 
 **Front-end:** Next.js,
+React,
 React Query,
 Jotai,
 Axios,
