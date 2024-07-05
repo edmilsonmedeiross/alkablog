@@ -1,9 +1,9 @@
-![image](https://github.com/edmilsonmedeiross/alkablog/assets/110620775/7cb5d994-feac-4c2e-b57b-e15c7a97c8ae)
 
 # Blog com Next.js, React Query, Jotai, Axios e TypeScript
 
 Este é um projeto de blog que exibe posts na página inicial e ao clicar em um post é possível visualizar os detalhes do mesmo. Na página inicial também é possível ver os principais leitores e ao clicar em um deles é possível ver mais detalhes sobre o usuário.
 
+![image](https://github.com/edmilsonmedeiross/alkablog/assets/110620775/7cb5d994-feac-4c2e-b57b-e15c7a97c8ae)
 
 ## Stack utilizada
 
